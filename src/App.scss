@@ -1,0 +1,55 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: white;
+}
+
+.content {
+  z-index: 1;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.wish-button {
+  background: linear-gradient(to bottom, #f6a500, #dd7b00);
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wish-button:hover {
+  background: linear-gradient(to bottom, #ffb52a, #ea8900);
+  transform: translateY(-2px);
+}

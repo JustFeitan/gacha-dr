@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'HYWenHei';
+  src: url('assets/fonts/HYWenHei.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'HYWenHei', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
