@@ -366,7 +366,7 @@ const BannerDisplay: React.FC = () => {
                 </>
             ) : (
                 <div className="video-container">
-                    <video ref={videoRef} autoPlay playsInline className="video-element">
+                    <video ref={videoRef} autoPlay playsInline className="full-screen-video">
                         <source src={currentVideo} type="video/mp4"/>
                         Your browser does not support the video tag.
                     </video>

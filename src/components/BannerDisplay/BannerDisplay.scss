@@ -109,6 +109,7 @@
       &:hover {
         background-color: #ff9e42;
       }
+
     }
   }
 }
@@ -138,7 +139,7 @@
   .simple-responsive-image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 450px;
   }
 }
 
@@ -220,6 +221,7 @@
         box-shadow: none;
       }
     }
+
   }
 
   .video-container {
@@ -283,6 +285,7 @@
   right:5%;
   width: 70px!important;
   height: 70px!important;
+  z-index: 999999;
 }
 
 .bgm-off-on {
@@ -293,3 +296,21 @@
   width: 70px!important;
   height: 70px!important;
 }
+
+@media only screen and (max-width: 1034px) {
+
+  .bgm-off-on {
+    position: absolute!important;
+    top: 8%;
+    right: 25%;
+    background-color: #58697F;
+    width: 70px!important;
+    height: 70px!important;
+  }
+  .banner__wish_button {
+    bottom: 0;
+    right: 0;
+  }
+
+}
+
