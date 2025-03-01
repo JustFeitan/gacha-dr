@@ -352,7 +352,6 @@ const BannerDisplay: React.FC = () => {
                     )}
                 </div>
             )}
-            <Button onClick={() => setIsPlayingVideo(prevState => !prevState)}/>
         </div>
     );
 };
