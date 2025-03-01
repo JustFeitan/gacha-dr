@@ -236,11 +236,11 @@ const BannerDisplay: React.FC = () => {
                     }
                     break;
                 case ItemRarity.FourStar:
-                    videoUrl = "/videos/buldac.mp4";
+                    videoUrl = "/videos/buldac.webm";
                     console.log(`Playing 4-star video`);
                     break;
                 case ItemRarity.FiveStar:
-                    videoUrl = "/videos/5star-single.mp4";
+                    videoUrl = "/videos/5star-single.webm";
                     console.log(`Playing 5-star video`);
                     break;
                 default:
