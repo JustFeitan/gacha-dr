@@ -11,11 +11,11 @@ import GiftIcon from "@/assets/gift_icon.svg";
 
 // Define the 3-star video options
 const threeStarVideos = [
-    "/videos/3star-chudo-choco.mp4",
-    "/videos/3star_box(new).mp4",
-    "/videos/3star_chudo2.mp4",
-    "/videos/3star_egg(new).mp4",
-    "/videos/3star-chips(new).mp4"
+    "/videos/3star-chudo-choco.webm",
+    "/videos/3star_box(new).webm",
+    "/videos/3star_chudo2.webm",
+    "/videos/3star_egg(new).webm",
+    "/videos/3star-chips(new).webm"
 ];
 
 // Interface for tracking which video goes with which wish
