@@ -1,12 +1,14 @@
 import {useWindowSize} from "react-use";
 import "./WIthBirthday.scss";
 import BirthdayConfetti from "@/components/Confeti/Confeti.tsx";
-import React, {FC, useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import Combo1 from '@/assets/confeti/combo_2.png';
 import Combo2 from '@/assets/confeti/combo_1.png';
 import Pivo from '@/assets/confeti/pivo.png';
 import PivoBuldac from '@/assets/confeti/pivo+buldac.png';
-import AudioReactiveEffect from "@/components/AudioReactiveEffect/AudioReactiveEffect.tsx";
+import Chips from '@/assets/confeti/chips.png';
+import Kinder from '@/assets/confeti/kinder.png';
+import KinderShock from '@/assets/confeti/kinder_shok.png';
 
 interface WIthBirthdayProps {
     showMessage: boolean;
@@ -15,7 +17,7 @@ interface WIthBirthdayProps {
 
 const WIthBirthday: FC<WIthBirthdayProps> = ({closeBirthdayMessage, showMessage = true}) => {
     const {width, height} = useWindowSize();
-    const dropArray = [PivoBuldac, Pivo, Combo1, Combo2]
+    const dropArray = [PivoBuldac, Pivo, Combo1, Combo2, Chips, Kinder, KinderShock]
     // Inside your BannerDisplay component:
     const [birthdayAudio, setBirthdayAudio] = useState<HTMLAudioElement | null>(null);
     const [isBirthdayMusicPlaying, setIsBirthdayMusicPlaying] = useState<boolean>(false);
