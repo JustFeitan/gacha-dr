@@ -1,0 +1,334 @@
+// Birthday celebration styles with restored color cycling animation
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes colorCycle {
+  0% { color: #ff0080; text-shadow: 0 0 15px #ff0080, 3px 3px 0 rgba(0,0,0,0.5); }
+  25% { color: #ffce00; text-shadow: 0 0 15px #ffce00, 3px 3px 0 rgba(0,0,0,0.5); }
+  50% { color: #5bff00; text-shadow: 0 0 15px #5bff00, 3px 3px 0 rgba(0,0,0,0.5); }
+  75% { color: #00f7ff; text-shadow: 0 0 15px #00f7ff, 3px 3px 0 rgba(0,0,0,0.5); }
+  100% { color: #ff0080; text-shadow: 0 0 15px #ff0080, 3px 3px 0 rgba(0,0,0,0.5); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes particleFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.birthday-celebration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.95) 100%);
+  animation: fadeIn 0.5s ease forwards;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
+    linear-gradient(45deg, #ff00cc, #3333ff);
+    background-size: 20px 20px, 100% 100%;
+    opacity: 0.1;
+  }
+
+  // Confetti particles
+  .particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    animation: particleFall 4s linear infinite;
+
+    @for $i from 1 through 50 {
+      &:nth-child(#{$i}) {
+        left: #{random(100)}vw;
+        width: #{random(10) + 5}px;
+        height: #{random(10) + 5}px;
+        background-color: rgb(random(255), random(255), random(255));
+        animation-duration: #{(random(20) / 5) + 2}s;
+        animation-delay: #{random(10) / 10}s;
+      }
+    }
+  }
+
+  .birthday-content {
+    position: relative;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+
+    // Add audio-reactive animation
+    animation:
+            float 4s ease-in-out infinite,
+            audioGlow 0.5s ease-out infinite;
+
+    // Make shadow responsive to audio
+    box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 calc(30px * var(--audio-scale)) rgba(0, 255, 216, 0.5);
+
+    // Subtle scale effect with audio
+    transform: scale(calc(0.95 + 0.05 * var(--audio-scale))) translateY(0px);
+  }
+
+  .birthday-text {
+
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    // Add audio reactivity to glow
+    &:before {
+      // [existing styles]
+      filter: blur(calc(4px * var(--audio-scale)));
+    }
+
+    // Make the text pulse with the audio
+    transform: scale(calc(0.95 + 0.05 * var(--audio-scale)));
+    transition: transform 0.1s ease-out;
+    // Apply two effects simultaneously for maximum impact:
+
+    // 1. Background gradient for the main text
+    background: linear-gradient(
+                    to right,
+                    #ff0080, #ff8c00, #ffce00, #5bff00, #00f7ff, #8a2be2, #ff0080
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 10s linear infinite;
+
+    // 2. Colored glow animation with proper shadow
+    animation: colorCycle 8s ease infinite;
+
+    // Add a beautiful rainbow duplicate that's slightly offset
+    &:before {
+      content: "С днем рождения!";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      z-index: 2;
+      background: linear-gradient(
+                      to right,
+                      #ff0080, #ff8c00, #ffce00, #5bff00, #00f7ff, #8a2be2, #ff0080
+      );
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.5;
+      filter: blur(4px);
+      animation: gradientMove 10s linear infinite reverse;
+    }
+
+    // Add a subtle 3D effect
+    text-shadow:
+            3px 3px 0 rgba(0, 0, 0, 0.5),
+            -1px -1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .close-birthday {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+// Add these animations to your existing CSS
+@keyframes rotateClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounterClockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+// Add this to your existing birthday-celebration styles
+.birthday-celebration {
+  // [existing styles]
+
+  // Icon styles
+  .birthday-icon {
+    position: absolute;
+    width: 80px; // Adjust size as needed
+    height: 80px; // Adjust size as needed
+    top: 50%;
+    transform: translateY(-50%);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255, 214, 127, 0.7));
+    }
+
+    // Left icon - counterclockwise rotation
+    &.birthday-icon-left {
+      left: -120px; // Adjust position as needed
+      img {
+        animation: rotateCounterClockwise 6s linear infinite;
+      }
+    }
+
+    // Right icon - clockwise rotation
+    &.birthday-icon-right {
+      right: -120px; // Adjust position as needed
+      img {
+        animation: rotateClockwise 6s linear infinite;
+      }
+    }
+  }
+
+  // Adjust birthday-content to accommodate the icons
+  .birthday-content {
+    // [existing styles]
+    padding: 40px 80px; // Add more horizontal padding
+    position: relative;
+  }
+}
+
+// Add these animations to your existing CSS
+@keyframes particleFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes rotateConfettiClockwise {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+@keyframes rotateConfettiCounterClockwise {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(-360deg); }
+}
+
+// Image confetti styles
+.birthday-celebration {
+  // [existing styles]
+
+  .image-particle {
+    position: absolute;
+    top: -100px;
+    object-fit: contain;
+    z-index: -3;
+    pointer-events: none; // Make sure they don't interfere with clicks
+    opacity: 0.9;
+
+    // Apply drop shadow to make images pop against the background
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+
+    &.rotate-clockwise {
+      animation: rotateConfettiClockwise linear infinite;
+    }
+
+    &.rotate-counterClockwise {
+      animation: rotateConfettiCounterClockwise linear infinite;
+    }
+  }
+}
+
+// Create a CSS variable for audio reactivity
+:root {
+  --audio-scale: 1;
+}
+
+// Audio reactive container and canvas
+.audio-reactive-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.audio-reactive-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+// Audio glow animation
+
+@keyframes audioGlow {
+  0% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 215, 0, calc(0.1 + 0.3 * var(--audio-scale)));
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Ensure icons also react to audio
+.birthday-icon {
+  &.birthday-icon-left img,
+  &.birthday-icon-right img {
+    transform: scale(calc(0.8 + 0.2 * var(--audio-scale)));
+  }
+}

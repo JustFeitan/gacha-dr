@@ -8,6 +8,7 @@ import CloseBtn from "../../assets/close.png";
 import Button from "@/components/Button/Button.tsx";
 import {ItemRarity, WishItem} from "@/types/types.ts";
 import GiftIcon from "@/assets/gift_icon.svg";
+import WIthBirthday from "@/components/WIthBirthday/WIthBirthday.tsx";
 
 // Define the 3-star video options
 const threeStarVideos = [
@@ -36,6 +37,7 @@ const BannerDisplay: React.FC = () => {
     const [userInteracted, setUserInteracted] = useState<boolean>(false);
     const [threeStarVideoMapping, setThreeStarVideoMapping] = useState<WishVideoMapping[]>([]);
     const [autoplayAttempted, setAutoplayAttempted] = useState<boolean>(false);
+    const [showwWIthBirthday, setShowwWIthBirthday] = useState<boolean>(false);
     const videoRef = useRef<HTMLVideoElement>(null);
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -201,9 +203,15 @@ const BannerDisplay: React.FC = () => {
         }
     }, [isPlayingVideo, musicEnabled, playBackgroundMusic]);
 
+    useEffect(() => {
+        if (!remainingWishes && !isPlayingVideo) {
+            setShowwWIthBirthday(true)
+        }
+    }, [remainingWishes, isPlayingVideo]);
+
     const handleWish = () => {
         console.log("Wish button clicked");
-
+        if (!remainingWishes) setShowwWIthBirthday(true)
         if (remainingWishes > 0) {
             const wishIndex = Math.floor(Math.random() * remainingWishes);
             console.log(threeStarVideoMapping, 'threeStarVideoMapping');
@@ -291,12 +299,18 @@ const BannerDisplay: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        playBackgroundMusic()
+    }, [showwWIthBirthday]);
+    const handleCloseWithBirthdayMsg = () => {
+        setShowwWIthBirthday(false)
+    }
     return (
         <div className="banner">
             {/* Background music audio element */}
             <audio
                 ref={audioRef}
-                src="/music/bgm.mp3"
+                src={showwWIthBirthday ?"/music/buldac-rain.mp3":"/music/bgm.mp3"}
                 loop
                 preload="auto"
             />
@@ -327,13 +341,28 @@ const BannerDisplay: React.FC = () => {
                             className="simple-responsive-image"
                         />
                     </div>
-                    <Button
+                  <Button
                         backgroundImage={Wishbutton}
                         text="Start Adventure"
                         className="banner__wish_button"
                         onClick={handleWish}
                         disabled={remainingWishes <= 0}
                     />
+                    {/*{*/}
+                    {/*   !remainingWishes &&*/}
+                    {/*    <> <Button*/}
+                    {/*        backgroundImage={Barabani}*/}
+                    {/*        text={''}*/}
+                    {/*        className="banner__barabani"*/}
+                    {/*        onClick={handleWish}*/}
+                    {/*        showIcon={false}*/}
+
+                    {/*        disabled={remainingWishes <= 0}*/}
+                    {/*    />*/}
+                    {/*     <span className="banner__barabani__text">НАЖМИ НА МЕНЯ</span>*/}
+                    {/*    </>*/}
+
+                    {/*}*/}
                 </>
             ) : (
                 <div className="video-container">
@@ -352,6 +381,7 @@ const BannerDisplay: React.FC = () => {
                     )}
                 </div>
             )}
+            <WIthBirthday  showMessage={showwWIthBirthday} closeBirthdayMessage={handleCloseWithBirthdayMsg}/>
         </div>
     );
 };

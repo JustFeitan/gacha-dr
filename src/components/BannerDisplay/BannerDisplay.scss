@@ -8,6 +8,26 @@
     right: 10%;
     bottom: 10%;
   }
+  &__barabani{
+    height:150px !important;
+    position: fixed!important;
+    right: 10%;
+    bottom: 10%;
+    &__text{
+      right: 8%;
+      bottom: 0;
+      height:150px !important;
+      position: fixed!important;
+      font-size: 40px;
+      color: #ac00ff;
+    }
+  }
+  &__barabani{
+    height:150px !important;
+    position: fixed!important;
+    right: 10%;
+    bottom: 10%;
+  }
   .banner-content {
     background: url('../../assets/d6wd77ssad.png') no-repeat center center;
     background-size: cover;
@@ -102,6 +122,24 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+
+@media only screen and (max-width: 1934px) {
+
+  .simple-responsive-image {
+    display: block;
+    width: 100%;
+    height: 750px;
+  }
+}
+@media only screen and (max-width: 1134px) {
+
+  .simple-responsive-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .wish-handler {
